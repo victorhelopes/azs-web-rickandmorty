@@ -9,7 +9,12 @@ interface CharacterCardProps {
   image: string;
 }
 
-export const CharacterCard = ({ name, species, status, image }: CharacterCardProps) => (
+export const CharacterCard = ({
+  name,
+  species,
+  status,
+  image,
+}: CharacterCardProps) => (
   <StyledCharacterCard>
     <Image src={image} size={50} avatar alt={name} />
     <Body>

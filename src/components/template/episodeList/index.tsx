@@ -7,7 +7,7 @@ interface EpisodeListProps {
   empty?: string;
 }
 
-export const EpisodeList = ({...props}: EpisodeListProps) => {
+export const EpisodeList = ({ ...props }: EpisodeListProps) => {
   return (
     <EpisodeListStyled>
       {props.episodes.length === 0 ? (

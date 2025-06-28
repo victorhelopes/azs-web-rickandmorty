@@ -51,8 +51,10 @@ export const Header = ({ onSearch }: HeaderProps) => {
       {isModalFavoritesOpen && (
         <Modal onClose={handleCloseModal} title={`Episodios Favoritos`}>
           {
-            <EpisodeList episodes={Object.values(favorites)} empty="Nenhum episódio favorito encontrado."/>
-            
+            <EpisodeList
+              episodes={Object.values(favorites)}
+              empty="Nenhum episódio favorito encontrado."
+            />
           }
         </Modal>
       )}
