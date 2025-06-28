@@ -24,7 +24,7 @@ export const CardHeader = styled.div`
 
 export const Badge = styled.span`
     display: flex; 
-    background-color: var(--gray-color);
+    background-color: var(--primary-color);
     color: var(--black-color);
     padding: var(--padding-xsmall) var(--padding-base);
     border-radius: var(--border-radius-xsmall);
