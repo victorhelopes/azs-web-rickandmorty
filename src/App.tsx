@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { Loading } from "./components/atoms/loading";
+import { EpisodeList } from "./styles";
+import { useCharacters } from "./graphql/queries/getCharacters";
+import { EpisodeCard } from "./components/organism/episodeCard";
+import type { IEpisode } from "./types/episode";
+import { Header } from "./components/molecules/header";
+import { Pagination } from "./components/molecules/pagination";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { data, loading, error } = useCharacters({
+    fields: 'id episode name air_date characters {id  name  species status image}',
+    page: currentPage,
+    name: searchTerm
+  });
+
+  if (loading) return <Loading />;
+  if (error) return <p>error: {error.message}</p>;
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header
+        onSearch={(term) => setSearchTerm(term)}
+      />
+      <div className='container'>
+        <EpisodeList>
+          {data.episodes.results.map((episode: IEpisode) => (
+            <EpisodeCard key={episode.id} episode={episode} />
+          ))}
+        </EpisodeList>
+        <Pagination
+          totalPages={data.episodes.info.next ? data.episodes.info.pages : currentPage}
+          currentPage={currentPage}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
-
-export default App
