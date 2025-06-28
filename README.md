@@ -1,69 +1,84 @@
 # React + TypeScript + Vite
+Aplicação web do universo Rick and Morty, desenvolvida com React e TypeScript seguindo o padrão Atomic Design. Consome dados da Rick and Morty API.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+--------------------------------------------------------
 
-Currently, two official plugins are available:
+Tecnologias:
+- React + TypeScript
+- Styled-Components
+- Storybook
+- Atomic Design
+- Vite (ou outro bundler)
+- Rick and Morty API
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+--------------------------------------------------------
 
-## Expanding the ESLint configuration
+Estrutura do Projeto:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+src/
+  atoms/
+    icon/
+    image/
+    text/
+  molecules/
+    characterCard/
+  organisms/
+    episodeCard/
+    modal/
+  utils/
+  pages/
+  styles/
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+--------------------------------------------------------
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Como Executar:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone o repositório:
+git clone https://github.com/victorhelopes/azs-web-rickandmorty.git
+cd azs-web-rickandmorty
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Instale as dependências:
+yarn
+ou
+npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Inicie o servidor de desenvolvimento:
+yarn dev
+ou
+npm run dev
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Inicie o Storybook:
+yarn storybook
+ou
+npm run storybook
+
+--------------------------------------------------------
+
+Funcionalidades:
+- Listagem de episódios
+- Modal com detalhes do episódio
+- Visualização de personagens do episódio
+- Componentes reutilizáveis e escaláveis com Atomic Design
+
+--------------------------------------------------------
+
+API:
+Os dados são consumidos da Rick and Morty API (https://rickandmortyapi.com/documentation)
+
+--------------------------------------------------------
+
+Scripts disponíveis:
+- yarn dev -> roda a aplicação
+- yarn storybook -> abre o Storybook
+- yarn build -> build de produção
+- yarn lint -> executa o lint
+
+--------------------------------------------------------
+
+Licença:
+MIT
+
+Autor:
+victorhelopes (https://github.com/victorhelopes)
+
 ```
