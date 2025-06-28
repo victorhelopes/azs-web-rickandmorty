@@ -1,7 +1,7 @@
 import { Button } from "../../atoms/button";
 import { Icon } from "../../atoms/icon";
 import { Title } from "../../atoms/title/styles";
-import { Header } from "./styles";;
+import { Header } from "./styles";
 
 interface ModalHeaderProps {
   title: string;
